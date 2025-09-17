@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller // 컨트롤러 어노테이션 명시
 public class DemoController {
@@ -11,4 +13,12 @@ public class DemoController {
         model.addAttribute("data", "방갑습니다."); // model 설정
         return "hello"; // hello.html 연결
     }
+   
+    @GetMapping("/about_detailed")
+    public String about() {
+        return "about_detailed";
+    }
+
+
+    
 }
