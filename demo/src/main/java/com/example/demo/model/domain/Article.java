@@ -25,4 +25,18 @@ public class Article {
         this.title = title;
         this.content = content;
     }
+
+    // ---------------------- 수정 기능 추가 ----------------------
+
+    /**
+     * 게시글의 제목과 내용을 업데이트하는 메서드
+     * this 키워드를 사용해 멤버 변수(this.title)와 매개 변수(title)를 구분합니다.
+     * @param title 새로운 제목
+     * @param content 새로운 내용
+     */
+    public void update (String title, String content) { // 현재 객체 상태 업데이트
+        this.title = title;
+        this.content = content;
+    }
+    // ------------------------------------------------------------------
 }
