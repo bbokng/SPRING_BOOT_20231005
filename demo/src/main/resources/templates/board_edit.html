@@ -5,6 +5,7 @@
     <title>게시글 수정</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/css/theme-pink.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -12,6 +13,7 @@
 
     <div class="mt-4">
         <form th:action="@{/api/board_edit/{id}(id=${board.id})}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <input type="hidden" name="_method" value="put">
             <div class="form-group">
                 <label for="title">제목</label>

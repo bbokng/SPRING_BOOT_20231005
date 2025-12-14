@@ -1,8 +1,11 @@
 package com.example.demo.Controller;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -65,7 +68,24 @@ public class BlogController {
     @GetMapping("/board_list")
     public String boardList(Model model,
                             @RequestParam(defaultValue = "0") int page,
-                            @RequestParam(defaultValue = "") String keyword) {
+                            @RequestParam(defaultValue = "") String keyword,
+                            HttpSession session) {
+        Object userId = session.getAttribute("userId");
+        Object email = session.getAttribute("email");
+        System.out.println("Session userId: " + userId);
+        if (userId == null) {
+            StringBuilder redirect = new StringBuilder("redirect:/member_login");
+            if (page != 0 || (keyword != null && !keyword.isEmpty())) {
+                redirect.append("?page=").append(page);
+                if (keyword != null && !keyword.isEmpty()) {
+                    redirect.append("&keyword=").append(URLEncoder.encode(keyword, StandardCharsets.UTF_8));
+                }
+            }
+            return redirect.toString();
+        }
+        if (email != null) {
+            model.addAttribute("email", email.toString());
+        }
 
         PageRequest pageable = PageRequest.of(page, 3);
 

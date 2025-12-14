@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>블로그 게시판</title>
+    <title>블로그 게시글</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/css/theme-pink.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <h1 class="mt-5">블로그 게시판</h1>
+        <h1 class="mt-5">블로그 게시글</h1>
 
         <div class="mt-4">
-            <h2>게시글 추가</h2>
+            <h2>게시글 작성</h2>
             <form th:action="@{/api/articles}" method="post" name="content">
                 <div class="form-group">
                     <label for="title">제목:</label>
